@@ -62,9 +62,12 @@ Le script génère :
 - Des graphiques représentant les tendances des ventes
 
 Auteur
+Nom : Rayhane Berzig  Rayhen Romdhan nawal garssalla
+Classe : LMA2 
+Établissement : faculte de science de tunis (FST)
 
-Rayhane Berzig    Rayhane Romdhan  Nawal Garssalla
+Projet réalisé dans le cadre du Projet de Fin d’Année (PFA) en programmation Python
 
-Contexte
+
 
 Projet réalisé dans le cadre d’un projet de fin d’année (PFA) portant sur l’automatisation de l’analyse des ventes e-commerce.
