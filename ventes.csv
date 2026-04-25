@@ -1,0 +1,9 @@
+Transaction ID,Date,Customer ID,Gender,Age,Product Category,Quantity,Price per Unit,Remise (%),Total Amount
+1,2023-01-01,CUST1,Male,25,Clothing,2,50,10,100
+2,2023-01-02,CUST2,Female,30,Beauty,1,30,5,30
+3,2023-01-03,CUST3,Male,45,Electronics,3,100,15,300
+4,2023-01-04,CUST4,Female,22,Clothing,4,25,0,100
+5,2023-01-05,CUST5,Male,35,Beauty,2,40,20,80
+6,2023-01-06,CUST6,Female,28,Electronics,1,200,10,200
+7,2023-01-07,CUST7,Male,50,Clothing,3,60,5,180
+8,2023-01-08,CUST8,Female,27,Beauty,5,20,0,100
