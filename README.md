@@ -46,7 +46,7 @@ Installation
 Utilisation
 
 Exécuter le script principal :
-python main.py
+projetpfafinale.py
 
 Données
 
