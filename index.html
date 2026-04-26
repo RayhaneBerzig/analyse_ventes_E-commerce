@@ -1,80 +1,192 @@
-<!-- Chart.js -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard E-commerce Pro</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="charts">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-    <div class="chart-box">
-        <h3>📊 CA par catégorie</h3>
-        <canvas id="catChart"></canvas>
+body{
+    background:#0f172a;
+    color:white;
+}
+
+/* HEADER */
+header{
+    background:#111827;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #1f2937;
+}
+
+header h1{
+    font-size:20px;
+    color:#38bdf8;
+}
+
+nav a{
+    color:#cbd5e1;
+    margin-left:20px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h2{
+    font-size:36px;
+    color:#38bdf8;
+}
+
+.hero p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+/* STATS */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    padding:40px;
+}
+
+.card{
+    background:#111827;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #1f2937;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#38bdf8;
+}
+
+.card h3{
+    font-size:26px;
+    color:#38bdf8;
+}
+
+.card p{
+    color:#94a3b8;
+}
+
+/* CHART */
+.chart-section{
+    padding:40px;
+}
+
+.chart-box{
+    background:#111827;
+    padding:20px;
+    border-radius:12px;
+    border:1px solid #1f2937;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    color:#64748b;
+    font-size:13px;
+    margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📊 E-commerce Dashboard</h1>
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Analyse</a>
+        <a href="#">Rapports</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Tableau de Bord Intelligent</h2>
+    <p>Analyse professionnelle des ventes en temps réel</p>
+</section>
+
+<section class="stats">
+    <div class="card">
+        <h3 id="ca">--</h3>
+        <p>Chiffre d'affaires</p>
     </div>
 
-    <div class="chart-box">
-        <h3>👥 Répartition par genre</h3>
-        <canvas id="genderChart"></canvas>
+    <div class="card">
+        <h3 id="orders">320</h3>
+        <p>Commandes</p>
     </div>
 
-    <div class="chart-box">
-        <h3>📈 Évolution des ventes</h3>
-        <canvas id="timeChart"></canvas>
+    <div class="card">
+        <h3 id="clients">150</h3>
+        <p>Clients</p>
     </div>
+</section>
 
-</div>
+<section class="chart-section">
+    <div class="chart-box">
+        <canvas id="chart"></canvas>
+    </div>
+</section>
+
+<footer>
+    © 2026 - Dashboard E-commerce Pro
+</footer>
 
 <script>
-/* ⚠️ Données temporaires (tu peux les remplacer par Python plus tard) */
-const categories = ["Clothing", "Beauty", "Electronics"];
-const ca_categories = [3000, 2500, 4000];
+/* ===== GRAPH ===== */
+const ctx = document.getElementById('chart');
 
-const genders = ["Male", "Female"];
-const ca_gender = [5000, 4500];
-
-const dates = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin"];
-const ca_time = [2000, 3000, 2500, 4000, 3500, 5000];
-
-/* 📊 Graphique 1 : catégories */
-new Chart(document.getElementById("catChart"), {
-    type: "bar",
+new Chart(ctx, {
+    type: 'line',
     data: {
-        labels: categories,
+        labels: ['Jan','Fév','Mar','Avr','Mai','Juin'],
         datasets: [{
-            label: "Chiffre d'affaires (€)",
-            data: ca_categories,
-            backgroundColor: ["#4facfe", "#00f2fe", "#2a5298"]
+            label: 'Ventes',
+            data: [2000,3000,2500,4000,3500,5000],
+            borderColor:'#38bdf8',
+            backgroundColor:'rgba(56,189,248,0.1)',
+            tension:0.4,
+            fill:true
         }]
     },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: false }
-        }
+    options:{
+        responsive:true
     }
 });
 
-/* 🥧 Graphique 2 : genre */
-new Chart(document.getElementById("genderChart"), {
-    type: "pie",
-    data: {
-        labels: genders,
-        datasets: [{
-            data: ca_gender,
-            backgroundColor: ["#ff6a88", "#36d1dc"]
-        }]
-    }
-});
-
-/* 📈 Graphique 3 : évolution */
-new Chart(document.getElementById("timeChart"), {
-    type: "line",
-    data: {
-        labels: dates,
-        datasets: [{
-            label: "CA (€)",
-            data: ca_time,
-            borderColor: "#2a5298",
-            backgroundColor: "rgba(42,82,152,0.2)",
-            fill: true,
-            tension: 0.3
-        }]
-    }
-});
+/* ===== FAKE KPI (tu peux connecter Python après) ===== */
+document.getElementById("ca").innerText = "12 540 €";
 </script>
+
+</body>
+</html>
